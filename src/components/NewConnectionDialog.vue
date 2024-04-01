@@ -62,6 +62,13 @@
             {{ $t('message.connection_readonly') }}
           </el-popover>
         </el-checkbox>
+        <el-checkbox v-model="connection.private">
+          Private
+          <el-popover trigger="hover">
+            <i slot="reference" class="el-icon-question"></i>
+            私有模式
+          </el-popover>
+        </el-checkbox>
       </el-form-item>
     </el-form>
 

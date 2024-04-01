@@ -35,7 +35,7 @@ process.on('uncaughtException', (err, origin) => {
 
 // auto update
 if (APP_ENV === 'production') {
-  require('./update')();
+  // require('./update')();
 }
 
 function createWindow() {

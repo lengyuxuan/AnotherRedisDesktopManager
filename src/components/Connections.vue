@@ -3,6 +3,7 @@
     <ConnectionWrapper
       v-for="item, index of connections"
       :key="item.key ? item.key : item.connectionName"
+      v-show="showPrivate || !item.private"
       :index="index"
       :globalSettings="globalSettings"
       :config='item'>
@@ -22,6 +23,7 @@ import Sortable from 'sortablejs';
 export default {
   data() {
     return {
+      showPrivate: false,
       connections: [],
       globalSettings: this.$storage.getSetting(),
     };
@@ -33,6 +35,10 @@ export default {
     });
     this.$bus.$on('reloadSettings', settings => {
       this.globalSettings = settings;
+    });
+    this.$shortcut.bind('alt+7', () => {
+      this.showPrivate = !this.showPrivate;
+      return false;
     });
   },
   methods: {
